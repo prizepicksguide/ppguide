@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var apiKey = 'AIzaSyAnF0G2O8oBzVGGJQSE8KKkOMjDMD9t7Kk';
+        var sheetId = '1BioElQ3SZiOP4iXHS5aS_vWSEnuF9zAe2aw249as5-0';
+
+        $(document).ready(function () {
+            // URL to retrieve data from the Google Sheets API
+            var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/GUIDE_NFL!A1:Q500?key=' + apiKey;
+            console.log(url)
+
+            // Retrieve data from the Google Sheets API
+            $.getJSON(url, function (data) {
+                var rows = data.values;
+                rows.sort(function (a, b) {
+                    return parseFloat(b[4].slice(0, -1)) - parseFloat(a[4].slice(0, -1));
+                });
+                var headers = rows[0];
+
+                // Create the table in HTML
+                var table = '<table class="table table-striped table-hover">';
+                table += '<thead class="thead-dark"><tr>';
+                // Add the headers to the table
+                for (var i = 0; i < headers.length; i++) {
+                    table += '<th>' + headers[i] + '</th>';
+                }
+                table += '</tr></thead>';
+                table += '<tbody>';
+
+                // Add the data rows to the table
+                for (var i = 1; i < rows.length; i++) {
+                    table += '<tr>';
+                    table += '<td><img src="' + rows[i][0] + '" alt="image" style="width: 75px; height: 75px;"></td>';
+                    for (var j = 1; j < rows[i].length; j++) {
+                        table += '<td>' + rows[i][j] + '</td>';
+                    }
+                    table += '</tr>';
+                }
+                table += '</tbody>';
+                table += '</table>';
+
+                // Add the table to the HTML
+                $('#table-container').html(table);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="table-container"></div>
+</body>
+
+</html>
