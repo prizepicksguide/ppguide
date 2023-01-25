@@ -1,85 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
-      body {
-        background-color: #444444;
-        font-family: 'Montserrat', sans-serif;
-        color: rgb(35, 54, 160);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-      }
-      #title {
-        font-size: 3em;
-        font-weight: 500;
-        margin-bottom: 50px;
-        text-shadow: 1px 1px #333333;
-      }
 
-      .card-container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    body {
+      background-color: #444444;
+      font-family: 'Montserrat', sans-serif;
+      color: rgb(35, 54, 160);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-      .card{
-        flex: 1 1 300px;
-        margin: 20px;
-        background-color: #f5f5f5;
-        border-radius: 10px;
-        box-shadow: 1px 1px #333333;
-        padding: 20px;
-        text-align: center;
-        transition: transform .3s ease-in-out;
-      }
-      .card:hover{
-        transform: scale(1.1);
-      }
-      .card img{
-        width: 100%;
-        border-radius: 10px 10px 0 0;
-      }
-      .card h2{
-        font-size: 1.5em;
-        margin: 20px 0;
-      }
-      .card p{
-        font-size: 1.2em;
-        line-height: 1.5;
-      }
-      .card .btn{
-        width: 100%;
-        margin-top: 20px;
-        background-color: #0b2e6f;
-        color: white;
-        border-radius: 10px;
-        font-size: 1.2em;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: background-color .3s ease;
-      }
-      .card .btn:hover{
-        background-color: #002244;
-      }
-    </style>
-  </head>
-  <body>
-    <h1 id="title">PrizePicks Guide</h1>
-    <div class="card-container">
-      <div class="card">
-        <img src="http://nba.smart.com.ph/images/nba_default_image.jpg" alt="NBA">
-        <h2>NBA</h2>
-        <a href="NBA_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
-      </div>
-      <div class="card">
-<img src="https://library.sportingnews.com/styles/facebook_1200x630/s3/2021-08/nfl-logo-080521-getty-ftr_1l4ashi1tahe91uiujfrmf291p.jpg?itok=GCwyUxBx" alt="NFL">
-<h2>NFL</h2>
-<a href="NFL_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
-</div>
-</div>
+    #title {
+      color: #f5f5f5;
+      font-size: 3em;
+      font-weight: 500;
+      margin-bottom: 50px;
+      text-shadow: 1px 1px #333333;
+    }
 
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      margin: 20px;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      box-shadow: 1px 1px #333333;
+      padding: 20px;
+      text-align: center;
+      transition: transform .3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .card h2 {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+
+    .card p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    .card .btn {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #0b2e6f;
+      color: white;
+      border-radius: 10px;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: background-color .3s ease;
+    }
+
+    .card .btn:hover {
+      background-color: #002244;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="title">PrizePicks Guide</h1>
+  <div class="card-container">
+    <div class="card">
+      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png&w=300&h=300&transparent=true"
+        alt="NBA">
+      <h2>NBA</h2>
+      <a href="NBA_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+    </div>
+    <div class="card">
+      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nhl.png&w=300&h=300&transparent=true"
+        alt="NHL">
+      <h2>NHL</h2>
+      <a href="NHL_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+    </div>
+    <div class="card">
+      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=300&h=300&transparent=true"
+        alt="NFL">
+      <h2>NFL</h2>
+      <a href="NFL_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+    </div>
+  </div>
