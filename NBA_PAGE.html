@@ -13,7 +13,7 @@
         $(document).ready(function () {
             // URL to retrieve data from the Google Sheets API
             var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/GUIDE_NBA!A1:Q500?key=' + apiKey;
-            
+
 
             // Retrieve data from the Google Sheets API
             $.getJSON(url, function (data) {
@@ -27,9 +27,15 @@
                 var table = '<table class="table table-striped table-hover">';
                 table += '<thead class="thead-dark"><tr>';
                 // Add the headers to the table
+                // Add the headers to the table
                 for (var i = 0; i < headers.length; i++) {
-                    table += '<th>' + headers[i] + '</th>';
+                    if (headers[i].startsWith("http") || headers[i].startsWith("https")) {
+                        table += '<th><img src="' + headers[i] + '" alt="image" style="width: 75px; height: 75px;"></th>';
+                    } else {
+                        table += '<th>' + headers[i] + '</th>';
+                    }
                 }
+
                 table += '</tr></thead>';
                 table += '<tbody>';
 

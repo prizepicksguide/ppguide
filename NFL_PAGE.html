@@ -28,7 +28,11 @@
                 table += '<thead class="thead-dark"><tr>';
                 // Add the headers to the table
                 for (var i = 0; i < headers.length; i++) {
-                    table += '<th>' + headers[i] + '</th>';
+                    if (headers[i].startsWith("http") || headers[i].startsWith("https")) {
+                        table += '<th><img src="' + headers[i] + '" alt="image" style="width: 75px; height: 75px;"></th>';
+                    } else {
+                        table += '<th>' + headers[i] + '</th>';
+                    }
                 }
                 table += '</tr></thead>';
                 table += '<tbody>';
