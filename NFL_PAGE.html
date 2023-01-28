@@ -2,23 +2,6 @@
 <html>
 
 <head>
-    <style>
-        td {
-          text-align: center;
-          vertical-align: middle;
-          font-size: 1.2rem;
-          font-weight: 650;
-        }
-        tr {
-          text-align: center;
-          vertical-align: middle;
-          font-size: 1.2rem;
-          font-weight: 900;
-        }
-        body {
-        font-family: 'Impact', sans-serif;
-        }
-        </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -54,10 +37,11 @@
                 table += '</tr></thead>';
                 table += '<tbody>';
 
+
                 // Add the data rows to the table
                 for (var i = 1; i < rows.length; i++) {
                     table += '<tr>';
-                    table += '<td><img src="' + rows[i][0] + '" alt="image" style="width: 75px; height: 75px;"></td>';
+                    table += '<td>' + rows[i][0] + '</td>';
                     for (var j = 1; j < rows[i].length; j++) {
                         table += '<td>' + rows[i][j] + '</td>';
                     }
@@ -71,6 +55,36 @@
             });
         });
     </script>
+    <style>
+        td {
+            border-radius: 10px;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 1.2rem;
+          font-weight: 600;
+          background-color: #EEEEEE;
+          
+        }
+        tr {
+          text-align: center;
+          vertical-align: middle;
+          font-size: 1.2rem;
+          font-weight: 900;
+
+        }
+        body {
+        font-family: 'Open Sans', sans-serif;
+
+        }
+        .table{
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 5px;
+            text-align: center;
+            
+            
+        }
+        </style>
 </head>
 
 <body>
