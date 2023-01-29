@@ -19,7 +19,7 @@
             $.getJSON(url, function (data) {
                 var rows = data.values;
                 rows.sort(function (a, b) {
-                    return parseFloat(b[4].slice(0, -1)) - parseFloat(a[4].slice(0, -1));
+                    return parseFloat(b[5].slice(0, -1)) - parseFloat(a[5].slice(0, -1));
                 });
                 var headers = rows[0];
 
