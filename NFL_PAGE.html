@@ -54,7 +54,7 @@
                             } else if (rows[i][j].endsWith('%') && percentageValue >= 54) {
                                 table += '<td class="percentage54">' + rows[i][j] + '</td>';
 
-                            } else if (rows[i][j].endsWith('%') && percentageValue >= 50 || percentageValue <= 50) {
+                            } else if (rows[i][j].endsWith('%') && (percentageValue >= 50 || percentageValue <= 50)) {
                                 table += '<td class="percentage50">' + rows[i][j] + '</td>';
 
                             } else {
