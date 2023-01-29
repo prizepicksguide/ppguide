@@ -6,9 +6,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <style>
     body {
-      background-color: #444444;
+      background-color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      color: rgb(35, 54, 160);
+      color: rgb(45, 71, 221);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -17,7 +17,7 @@
     }
 
     #title {
-      color: #f5f5f5;
+      color: #0b2e6f;
       font-size: 3em;
       font-weight: 500;
       margin-bottom: 50px;
@@ -25,20 +25,23 @@
     }
 
     .card-container {
-      display: flex;
-      flex-wrap: wrap;
+
+      width: 80%;
       justify-content: center;
     }
 
     .card {
       flex: 1 1 300px;
+
       margin: 100px;
-      background-color: #f5f5f5;
+      background-color: #EEEEEE;
       border-radius: 10px;
-      box-shadow: 1px 1px #333333;
       padding: 20px;
       text-align: center;
       transition: transform .3s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .card:hover {
@@ -46,8 +49,10 @@
     }
 
     .card img {
-      width: 100%;
+      width: 80px;
+      height: 80px;
       border-radius: 10px 10px 0 0;
+      margin-right: 20px;
     }
 
     .card h2 {
@@ -75,15 +80,22 @@
     .card .btn:hover {
       background-color: #002244;
     }
-    
+
     /* Add Media Queries for smaller screens */
     @media only screen and (max-width: 600px) {
       .card-container {
-        flex-wrap: wrap;
+        width: 90%;
       }
+
       .card {
         font-size: 0.8em;
         padding: 10px;
+        flex: 1 1 200px;
+      }
+
+      .card img {
+        width: 50px;
+        height: 50px;
       }
     }
   </style>
@@ -91,25 +103,48 @@
 
 <body>
   <h1 id="title">PrizePicks Guide</h1>
-<div class="card-container">
+  <div class="card-container">
     <div class="card">
-      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png&w=300&h=300&transparent=true"
-        alt="NBA">
-      <h2>NBA</h2>
-      <a href="NBA_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      <div class="card-logo-container">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png&w=100&h=100&transparent=true"
+          alt="NBA">
+      </div>
+      <div class="card-text-container">
+        <h2>NBA</h2>
+        <a href="NBA_PAGE.html" class="card-btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      </div>
     </div>
     <div class="card">
-      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nhl.png&w=300&h=300&transparent=true"
-        alt="NHL">
-      <h2>NHL</h2>
-      <a href="NHL_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      <div class="card-logo-container">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nhl.png&w=100&h=100&transparent=true"
+          alt="NHL">
+      </div>
+      <div class="card-text-container">
+        <h2>NHL</h2>
+        <a href="NHL_PAGE.html" class="card-btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      </div>
     </div>
     <div class="card">
-      <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=300&h=300&transparent=true"
-        alt="NFL">
-      <h2>NFL</h2>
-      <a href="NFL_PAGE.html" class="btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      <div class="card-logo-container">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=100&h=100&transparent=true"
+          alt="NFL">
+      </div>
+      <div class="card-text-container">
+        <h2>NFL</h2>
+        <a href="NFL_PAGE.html" class="card-btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-logo-container">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/mlb.png&w=100&h=100&transparent=true"
+          alt="MLB">
+      </div>
+      <div class="card-text-container">
+        <h2>MLB</h2>
+        <a href="MLB_PAGE.html" class="card-btn waves-effect waves-light"> <span> VIEW PICKS </span> </a>
+      </div>
     </div>
   </div>
 </body>
+
 </html>
