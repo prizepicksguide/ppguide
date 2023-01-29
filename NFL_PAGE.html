@@ -2,18 +2,20 @@
 <html>
 
 <head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        var apiKey = 'AIzaSyAnF0G2O8oBzVGGJQSE8KKkOMjDMD9t7Kk';
-        var sheetId = '1BioElQ3SZiOP4iXHS5aS_vWSEnuF9zAe2aw249as5-0';
+    var apiKey = 'AIzaSyAnF0G2O8oBzVGGJQSE8KKkOMjDMD9t7Kk';
+    var sheetId = '1BioElQ3SZiOP4iXHS5aS_vWSEnuF9zAe2aw249as5-0';
 
         $(document).ready(function () {
             // URL to retrieve data from the Google Sheets API
             var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/GUIDE_NFL!A1:R500?key=' + apiKey;
-            console.log(url)
+
 
             // Retrieve data from the Google Sheets API
             $.getJSON(url, function (data) {
@@ -34,9 +36,9 @@
                         table += '<th>' + headers[i] + '</th>';
                     }
                 }
+
                 table += '</tr></thead>';
                 table += '<tbody>';
-
 
                 // Add the data rows to the table
                 for (var i = 1; i < rows.length; i++) {
@@ -83,7 +85,6 @@
             font-size: 1.2rem;
             font-weight: 550;
             background-color: #EEEEEE;
-
         }
         tr {
             text-align: center;
@@ -91,10 +92,8 @@
             font-size: 1.2rem;
             font-weight: 900;
         }
-
         body {
             font-family: 'Open Sans', sans-serif;
-
         }
         .table {
             width: 100%;
