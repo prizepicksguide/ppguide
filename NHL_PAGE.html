@@ -43,15 +43,13 @@
 
                 // Add the data rows to the table
                 for (var i = 1; i < rows.length; i++) {
+                    table += '<tr>';
+                    table += '<td>' + rows[i][0] + '</td>';
                     for (var j = 1; j < rows[i].length; j++) {
-                        if (rows[i][j] !== "N/A") {
-                            table += '<tr>';
-                            table += '<td>' + rows[i][j] + '</td>';
-                        }
+                        table += '<td>' + rows[i][j] + '</td>';
                     }
                     table += '</tr>';
                 }
-
                 table += '</tbody>';
                 table += '</table>';
 
@@ -63,36 +61,33 @@
     <style>
         td {
             border-radius: 10px;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 1.2rem;
-            font-weight: 600;
-            background-color: #EEEEEE;
-
+          text-align: center;
+          vertical-align: middle;
+          font-size: 1.2rem;
+          font-weight: 600;
+          background-color: #EEEEEE;
+          
         }
-
         tr {
-            text-align: center;
-            vertical-align: middle;
-            font-size: 1.2rem;
-            font-weight: 900;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 1.2rem;
+          font-weight: 900;
 
         }
-
         body {
-            font-family: 'Open Sans', sans-serif;
+        font-family: 'Open Sans', sans-serif;
 
         }
-
-        .table {
+        .table{
             width: 100%;
             border-collapse: separate;
             border-spacing: 5px 5px;
             text-align: center;
-
-
+            
+            
         }
-    </style>
+        </style>
 </head>
 
 <body>
