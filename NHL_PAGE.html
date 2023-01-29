@@ -2,6 +2,8 @@
 <html>
 
 <head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -12,12 +14,10 @@
 
         $(document).ready(function () {
             // URL to retrieve data from the Google Sheets API
-            var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/GUIDE_NHL!A1:R500?key=' + apiKey;
+            var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/GUIDE_NBA!A1:R500?key=' + apiKey;
 
 
             // Retrieve data from the Google Sheets API
-
-
             $.getJSON(url, function (data) {
                 var rows = data.values;
                 rows.sort(function (a, b) {
@@ -28,7 +28,6 @@
                 // Create the table in HTML
                 var table = '<table class="table table-striped table-hover">';
                 table += '<thead class="thead-dark"><tr>';
-                // Add the headers to the table
                 // Add the headers to the table
                 for (var i = 0; i < headers.length; i++) {
                     if (headers[i].startsWith("http") || headers[i].startsWith("https")) {
