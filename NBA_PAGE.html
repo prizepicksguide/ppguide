@@ -42,6 +42,27 @@
 
                 // Add the data rows to the table
                 for (var i = 1; i < rows.length; i++) {
+                    var draftkings = rows[i][9];
+                    var fanduel = rows[i][10];
+                    var betmgm = rows[i][11];
+                    var caesars = rows[i][12];
+                    var betrivers = rows[i][13];
+                    var pointsbet = rows[i][14];
+                    var sugarhouse = rows[i][15];
+                    var twinspires = rows[i][16];
+                    var unibet = rows[i][17];
+
+                    var arrOdds = [draftkings,fanduel,betmgm,caesars,betrivers,pointsbet,sugarhouse,twinspires,unibet]
+                    var filterArrOdds = arrOdds.filter(word => word != "N/A");
+                    
+                    if(filterArrOdds.length >= 2){
+                        var low = Math.max(...filterArrOdds);
+                        var high = Math.min(...filterArrOdds);
+
+                        var lowIndex = arrOdds.indexOf(low+"");
+                        var highIndex = arrOdds.indexOf(high+"");
+                    }
+
                     table += '<tr>';
                     table += '<td>' + rows[i][0] + '</td>';
                     for (var j = 1; j < rows[i].length; j++) {
@@ -60,9 +81,17 @@
                                 table += '<td class="percentage50">' + rows[i][j] + '</td>';
 
                             } else {
-                                table += '<td>' + rows[i][j] + '</td>';
-                            }
+                                if(j == lowIndex+9){
+                                    table += '<td class="lowindex">' + rows[i][j] + '</td>';
 
+                                }else if(j == highIndex+9){
+                                    table += '<td class="highindex">' + rows[i][j] + '</td>';
+
+                                }else{
+                                    table += '<td>' + rows[i][j] + '</td>';
+                                }
+                                
+                            }
                         } else {
                             table += '<td>' + "    " + '</td>';
                         }
@@ -85,6 +114,7 @@
             font-size: 1.2rem;
             font-weight: 550;
             background-color: #EEEEEE;
+            
         }
         tr {
             text-align: center;
@@ -112,6 +142,18 @@
         }
         td.percentage50 {
             background-color: #fe0000;
+        }
+        td.lowindex{
+            outline-style: solid;
+            outline-width: .15px;
+            outline-color: #fe0000 ;
+
+        }
+        td.highindex{
+            outline-style: solid;
+            outline-width: .15px;
+            outline-color: #a1ff00 ;
+
         }
     </style>
 </head>
