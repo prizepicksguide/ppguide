@@ -55,20 +55,20 @@
                         var percentageValue = parseFloat(rows[i].pct_avg_odds_adj_balanced)
 
                         if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 60) {
-                            table += '<td class="percentage60">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            table += '<td class="percentage60">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
                         } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 58) {
-                            table += '<td class="percentage58">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            table += '<td class="percentage58">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
 
                         } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 55) {
-                            table += '<td class="percentage55">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            table += '<td class="percentage55">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
 
                         } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 50) {
-                            table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
 
                         }else if (rows[i].pct_avg_odds_adj_balanced && percentageValue < 50) {
-                            table += '<td class="percentageLess">' + rows[i].pct_avg_odds_adj_balanced + '</td>'
+                            table += '<td class="percentageLess">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>'
                         }else {
-                            table += '<td>' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            table += '<td>' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
                         }
 
                     } else {
