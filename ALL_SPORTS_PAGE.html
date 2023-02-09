@@ -56,16 +56,18 @@
 
                         if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 60) {
                             table += '<td class="percentage60">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
-                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 57) {
-                            table += '<td class="percentage57">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 58) {
+                            table += '<td class="percentage58">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
 
-                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 54) {
-                            table += '<td class="percentage54">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 55) {
+                            table += '<td class="percentage55">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
 
-                        } else if (rows[i].pct_avg_odds_adj_balanced && (percentageValue >= 50 || percentageValue <= 50)) {
+                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 50) {
                             table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
 
-                        } else {
+                        }else if (rows[i].pct_avg_odds_adj_balanced && percentageValue < 50) {
+                            table += '<td class="percentageLess">' + rows[i].pct_avg_odds_adj_balanced + '</td>'
+                        }else {
                             table += '<td>' + rows[i].pct_avg_odds_adj_balanced + '</td>';
                         }
 
@@ -110,18 +112,21 @@
         }
 
         td.percentage60 {
+            background-color: #3cff59;
+        }
+
+        td.percentage58 {
             background-color: #a1ff00;
         }
 
-        td.percentage57 {
+        td.percentage55 {
             background-color: #d4ff00;
         }
 
-        td.percentage54 {
+        td.percentage50 {
             background-color: #ff7300;
         }
-
-        td.percentage50 {
+        td.percentageLess{
             background-color: #fe0000;
         }
     </style>
