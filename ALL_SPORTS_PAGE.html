@@ -8,12 +8,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function () {
-      var url = "https://cors-anywhere.herokuapp.com/" + "https://dgfantasy.com/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=11610&target_action=get-all-data&default_sorting=old_first";
+      var url = "https://cors-anywhere.herokuapp.com/" + "https://dgfantasy.com/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=11529&target_action=get-all-data&default_sorting=old_first";
       $.getJSON(url, function (data) {
         var rows = data
-        rows.sort(function (a, b) {
-                    return parseFloat(b["pct_avg_odds_adj_balanced"]) - parseFloat(a["pct_avg_odds_adj_balanced"]);
-                });
+        var headers =
+          console.log(rows)
 
         var headers = ["First Name", "Last Name", "Sport", "Team", "Over/Under", "Stat", "https://cdn.oddsjam.com/sportsbook-logos/prizepicks.jpg", "Sportsbook Line", "AVG odds", "https://cdn.oddsjam.com/sportsbook-logos/pinnacle.jpg", "https://cdn.oddsjam.com/sportsbook-logos/fanduel.jpg", "https://cdn.oddsjam.com/sportsbook-logos/draftkings.jpg", "https://cdn.oddsjam.com/sportsbook-logos/barstool.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betmgm.jpg", "https://cdn.oddsjam.com/sportsbook-logos/caesars.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betonline.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bovada.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bet365.jpg", "https://cdn.oddsjam.com/sportsbook-logos/foxbet.jpg", "%hit"];
 
@@ -51,8 +50,33 @@
           table += '<td>' + (rows[i].bovada_odds || '') + '</td>';
           table += '<td>' + (rows[i].bet365_odds || '') + '</td>';
           table += '<td>' + (rows[i].fox_bet_odds || '') + '</td>';
-          table += '<td>' + (rows[i].pct_avg_odds_adj_balanced+"%" || '') + '</td>';
+
+          if (rows[i].pct_avg_odds_adj_balanced != null) {
+                            var percentageValue = parseFloat(rows[i].pct_avg_odds_adj_balanced)
+
+                            if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 60) {
+                                table += '<td class="percentage60">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 57) {
+                                table += '<td class="percentage57">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+
+                            } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 54) {
+                                table += '<td class="percentage54">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+
+                            } else if (rows[i].pct_avg_odds_adj_balanced && (percentageValue >= 50 || percentageValue <= 50)) {
+                                table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+
+                            } else {
+                                table += '<td>' + rows[i].pct_avg_odds_adj_balanced + '</td>';
+                            }
+
+                        } else {
+                            table += '<td>' + "    " + '</td>';
+                        }
+
           table += '</tr>';
+
+
+
         }
         table += '</tbody>';
         table += '</table>';
