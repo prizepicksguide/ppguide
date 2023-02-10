@@ -38,8 +38,8 @@
                     table += '<td>' + (rows[i].team || '') + '</td>';
                     table += '<td>' + (rows[i].over_under || '') + '</td>';
                     table += '<td>' + (rows[i].stat || '') + '</td>';
-                    table += '<td>' + (rows[i].prizepicks || '') + '</td>';
-                    table += '<td>' + (rows[i].line_value || '') + '</td>';
+                    table += '<td class="prizePicks">' + (rows[i].prizepicks || '') + '</td>';
+                    table += '<td class="sportsBook">' + (rows[i].line_value || '') + '</td>';
                     table += '<td>' + (rows[i].avg_odds || '') + '</td>';
                     table += '<td>' + (rows[i].pinnacle_odds || '') + '</td>';
                     table += '<td>' + (rows[i].fanduel_odds || '') + '</td>';
@@ -65,9 +65,9 @@
                         } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 50) {
                             table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
 
-                        }else if (rows[i].pct_avg_odds_adj_balanced && percentageValue < 50) {
+                        } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue < 50) {
                             table += '<td class="percentageLess">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>'
-                        }else {
+                        } else {
                             table += '<td>' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
                         }
 
@@ -89,8 +89,20 @@
             vertical-align: middle;
             font-size: 1.2rem;
             font-weight: 500;
-            background-color: #EEEEEE;
+            /*CHANGE BELOW FOR CELL COLORS*/
+            background-color: #eeeeee;
+            -webkit-text-fill-color: black;
+        }
 
+        td.dark {
+            border-radius: 10px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.2rem;
+            font-weight: 500;
+            /*CHANGE BELOW FOR CELL COLORS*/
+            background-color: #eeeeee;
+            -webkit-text-fill-color: black;
         }
 
         tr {
@@ -109,25 +121,56 @@
             border-collapse: separate;
             border-spacing: 5px 5px;
             text-align: center;
+            /*CHANGE BELOW FOR LINES BETWEEN*/
+            background-color: #ffffff;
+        }
+
+        .table.dark {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 5px;
+            text-align: center;
+            /*CHANGE BELOW FOR LINES BETWEEN*/
+            background-color: #161719;
+        }
+
+        td.prizePicks {
+            background-color: #6e6e6e;
+            font-weight: 700;
+        }
+
+        td.sportsBook {
+            font-weight: 700;
         }
 
         td.percentage60 {
             background-color: #3cff59;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
         }
 
         td.percentage58 {
             background-color: #a1ff00;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
         }
 
         td.percentage55 {
             background-color: #d4ff00;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
         }
 
         td.percentage50 {
             background-color: #ff7300;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
         }
-        td.percentageLess{
+
+        td.percentageLess {
             background-color: #fe0000;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
         }
     </style>
 </head>
