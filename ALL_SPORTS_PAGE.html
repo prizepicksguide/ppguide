@@ -242,13 +242,17 @@
 
 <body>
     <div class="buttons-container">
-        <button id="button1" class="checked">NFL</button>
-        <button id="button2" class="checked">NBA</button>
-        <button id="button3" class="checked">NHL</button>
-        <button id="button4" class="checked">MLB</button>
-        <button id="button5" class="checked">NCAAB</button>
-        <button id="button6" class="checked">EuroLeague</button>
-        <button id="button6" class="checked">ALL</button>
+        <script>
+            var buttonsArray = ["NBA", "NHL", "NCAAB", "EuroLeague", "ALL"];
+
+            for (var i = 0; i < buttonsArray.length; i++) {
+                var button = document.createElement("button");
+                button.id = "button" + (i + 1);
+                button.className = "checked";
+                button.innerHTML = buttonsArray[i];
+                document.querySelector(".buttons-container").appendChild(button);
+            }
+        </script>
     </div>
     <div style="overflow-x:auto; max-width:100vw;">
         <table>
