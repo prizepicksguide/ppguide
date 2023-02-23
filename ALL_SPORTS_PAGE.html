@@ -50,7 +50,7 @@
 
                     table += '<tbody>';
                     for (var i = 0; i < rows.length; i++) {
-                        if (checkedButtons.includes(rows[i].odds_site_league)) {
+                        if (checkedButtons.includes(rows[i].odds_site_league) || checkedButtons.includes("ALL")) {
                             table += '<tr>';
                             table += '<td>' + (rows[i].first_name || '') + '</td>';
                             table += '<td>' + (rows[i].last_name || '') + '</td>';
