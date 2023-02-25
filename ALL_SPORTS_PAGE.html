@@ -26,7 +26,7 @@
 
             function makeTable() {
 
-                var headers = ["First Name", "Last Name", "Sport", "Team", "Over/Under", "Player Stat Type", "https://cdn.oddsjam.com/sportsbook-logos/prizepicks.jpg", "SB Line", "% To Hit", "AVG odds", "https://cdn.oddsjam.com/sportsbook-logos/pinnacle.jpg", "https://cdn.oddsjam.com/sportsbook-logos/fanduel.jpg", "https://cdn.oddsjam.com/sportsbook-logos/draftkings.jpg", "https://cdn.oddsjam.com/sportsbook-logos/barstool.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betmgm.jpg", "https://cdn.oddsjam.com/sportsbook-logos/caesars.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betonline.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bovada.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bet365.jpg", "https://cdn.oddsjam.com/sportsbook-logos/foxbet.jpg"];
+                var headers = ["First Name", "Last Name", "Sport", "Team", "Over/Under", "Player Stat Type", "https://cdn.oddsjam.com/sportsbook-logos/prizepicks.jpg", "SB Line", "% To Hit", "AVG odds", "https://cdn.oddsjam.com/sportsbook-logos/pinnacle.jpg", "https://cdn.oddsjam.com/sportsbook-logos/fanduel.jpg", "https://cdn.oddsjam.com/sportsbook-logos/draftkings.jpg", "https://cdn.oddsjam.com/sportsbook-logos/barstool.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betmgm.jpg", "https://cdn.oddsjam.com/sportsbook-logos/caesars.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betonline.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bovada.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bet365.jpg", "https://cdn.oddsjam.com/sportsbook-logos/foxbet.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betano.jpg"];
 
                 var table = '<table class="table table-striped table-hover">';
                 table += '<thead class="thead-dark"><tr>';
@@ -94,6 +94,7 @@
                             table += '<td>' + (rows[i].bovada_odds || '') + '</td>';
                             table += '<td>' + (rows[i].bet365_odds || '') + '</td>';
                             table += '<td>' + (rows[i].fox_bet_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].betano_odds || '') + '</td>';
 
                             table += '</tr>';
                         }
