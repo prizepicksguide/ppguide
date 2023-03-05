@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Table Filter</title>
+</head>
+<body>
+
+	<!-- table -->
+	<table id="myTable">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>City</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>New York</td>
+			</tr>
+			<tr>
+				<td>Jane</td>
+				<td>Doe</td>
+				<td>Los Angeles</td>
+			</tr>
+			<tr>
+				<td>Bob</td>
+				<td>Smith</td>
+				<td>New York</td>
+			</tr>
+			<tr>
+				<td>Alice</td>
+				<td>Johnson</td>
+				<td>Chicago</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- dropdown menus -->
+	<label for="firstNameDropdown">Filter by First Name:</label>
+	<select id="firstNameDropdown" onchange="filterTable()">
+		<option value="">All</option>
+	</select>
+	<br><br>
+	<label for="lastNameDropdown">Filter by Last Name:</label>
+	<select id="lastNameDropdown" onchange="filterTable()">
+		<option value="">All</option>
+	</select>
+	<br><br>
+	<label for="cityDropdown">Filter by City:</label>
+	<select id="cityDropdown" onchange="filterTable()">
+		<option value="">All</option>
+	</select>
+
+	<!-- script to populate dropdown menus and filter table -->
+	<script>
+		var table = document.getElementById("myTable");
+		var firstNameDropdown = document.getElementById("firstNameDropdown");
+		var lastNameDropdown = document.getElementById("lastNameDropdown");
+		var cityDropdown = document.getElementById("cityDropdown");
+		var firstNameValues = [];
+		var lastNameValues = [];
+		var cityValues = [];
+
+		for (var i = 1; i < table.rows.length; i++) {
+			var firstName = table.rows[i].cells[0].innerHTML;
+			if (firstNameValues.indexOf(firstName) === -1) {
+				firstNameValues.push(firstName);
+			}
+
+			var lastName = table.rows[i].cells[1].innerHTML;
+			if (lastNameValues.indexOf(lastName) === -1) {
+				lastNameValues.push(lastName);
+			}
+
+			var city = table.rows[i].cells[2].innerHTML;
+			if (cityValues.indexOf(city) === -1) {
+				cityValues.push(city);
+			}
+		}
+
+		firstNameValues.sort();
+		lastNameValues.sort();
+		cityValues.sort();
+
+		for (var j = 0; j < firstNameValues.length; j++) {
+			var option = document.createElement("option");
+			option.text = firstNameValues[j];
+			firstNameDropdown.add(option);
+		}
+
+		for (var k = 0; k < lastNameValues.length; k++) {
+			var option = document.createElement("option");
+			option.text = lastNameValues[k];
+			lastNameDropdown.add(option);
+		}
+
+		for (var l = 0; l < cityValues.length; l++) {
+			var option = document.createElement("option");
+			option.text = cityValues[l];
+			cityDropdown.add(option);
+		}
+
+		function filterTable() {
+			var selectedFirstName = firstNameDropdown.value.toLowerCase();
+			var selectedLastName = lastNameDropdown.value.toLowerCase();
+			var selectedCity = cityDropdown.value.toLowerCase();
+
+		for (var i = 1; i < table.rows.length; i++) {
+			var firstName = table.rows[i].cells[0].innerHTML.toLowerCase();
+			var lastName = table.rows[i].cells[1].innerHTML.toLowerCase();
+			var city = table.rows[i].cells[2].innerHTML.toLowerCase();
+
+			if ((selectedFirstName === "" || firstName.indexOf(selectedFirstName) !== -1) &&
+				(selectedLastName === "" || lastName.indexOf(selectedLastName) !== -1) &&
+				(selectedCity === "" || city.indexOf(selectedCity) !== -1)) {
+				table.rows[i].style.display = "";
+			} else {
+				table.rows[i].style.display = "none";
+			}
+		}
+	}
+</script>
+</body>
+</html>
