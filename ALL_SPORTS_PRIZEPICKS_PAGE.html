@@ -54,6 +54,11 @@
                             table += '<tr>';
                             table += '<td>' + (rows[i].first_name || '') + '</td>';
                             table += '<td>' + (rows[i].last_name || '') + '</td>';
+                            if(rows[i].odds_site_league != "England - Premier League"){
+                                table += '<td>' + (rows[i].odds_site_league || '') + '</td>';
+                            }else{
+                                table += '<td>' + ("SOCCER") + '</td>';
+                            }
                             table += '<td>' + (rows[i].odds_site_league || '') + '</td>';
                             table += '<td>' + (rows[i].team || '') + '</td>';
                             table += '<td>' + (rows[i].over_under || '') + '</td>';
