@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const buttons = Array.from(document.querySelectorAll("button"));
+            let checkedButtons = [];
+            buttons.forEach(button => {
+                checkedButtons.push(button.textContent);
+                button.addEventListener("click", function () {
+                    this.classList.toggle("checked");
+                    if (this.classList.contains("checked")) {
+                        checkedButtons[buttons.indexOf(button)] = this.textContent;
+                    } else {
+                        checkedButtons[buttons.indexOf(button)] = "N/A";
+                    }
+                    makeTable();
+                });
+            });
+            makeTable();
+
+            function makeTable() {
+
+                var headers = ["First Name", "Last Name", "Sport", "Team", "Over/Under", "Player Stat Type", "https://cdn.oddsjam.com/sportsbook-logos/prizepicks.jpg", "SB Line", "% To Hit", "AVG odds", "https://cdn.oddsjam.com/sportsbook-logos/pinnacle.jpg", "https://cdn.oddsjam.com/sportsbook-logos/fanduel.jpg", "https://cdn.oddsjam.com/sportsbook-logos/draftkings.jpg", "https://cdn.oddsjam.com/sportsbook-logos/barstool.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betmgm.jpg", "https://cdn.oddsjam.com/sportsbook-logos/caesars.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betonline.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bovada.jpg", "https://cdn.oddsjam.com/sportsbook-logos/bet365.jpg", "https://cdn.oddsjam.com/sportsbook-logos/foxbet.jpg", "https://cdn.oddsjam.com/sportsbook-logos/betano.jpg"];
+
+                var table = '<table class="table table-striped table-hover">';
+                table += '<thead class="thead-dark"><tr>';
+                for (var i = 0; i < headers.length; i++) {
+                    if (headers[i].startsWith("http") || headers[i].startsWith("https")) {
+                        table += '<th><img src="' + headers[i] + '" alt="image" style="width: 75px; height: 75px;"></th>';
+                    } else {
+                        table += '<th>' + headers[i] + '</th>';
+                    }
+                }
+                table += '</tr></thead>';
+
+
+                var url = "https://cors-anywhere.herokuapp.com/" + "https://dgfantasy.com/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=11450&target_action=get-all-data&default_sorting=old_first";
+                $.getJSON(url, function (data) {
+                    var rows = data
+
+                    rows.sort(function (a, b) {
+                        return parseFloat(b["pct_avg_odds_adj_balanced"]) - parseFloat(a["pct_avg_odds_adj_balanced"]);
+                    });
+
+                    table += '<tbody>';
+                    for (var i = 0; i < rows.length; i++) {
+                        if (checkedButtons.includes(rows[i].odds_site_league) || checkedButtons.includes("ALL")) {
+                            table += '<tr>';
+                            table += '<td>' + (rows[i].first_name || '') + '</td>';
+                            table += '<td>' + (rows[i].last_name || '') + '</td>';
+                            if(rows[i].odds_site_league != "England - Premier League"){
+                                table += '<td>' + (rows[i].odds_site_league || '') + '</td>';
+                            }else{
+                                table += '<td>' + ("SOCCER") + '</td>';
+                            }
+                            table += '<td>' + (rows[i].team || '') + '</td>';
+                            table += '<td>' + (rows[i].over_under || '') + '</td>';
+                            table += '<td>' + (rows[i].stat || '') + '</td>';
+                            table += '<td class="prizePicks">' + (rows[i].prizepicks || '') + '</td>';
+                            table += '<td class="sportsBook">' + (rows[i].line_value || '') + '</td>';
+                            if (rows[i].pct_avg_odds_adj_balanced != null) {
+                                var percentageValue = parseFloat(rows[i].pct_avg_odds_adj_balanced)
+
+                                if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 60) {
+                                    table += '<td class="percentage60">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
+                                } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 58) {
+                                    table += '<td class="percentage58">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
+
+                                } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 55) {
+                                    table += '<td class="percentage55">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
+
+                                } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue >= 50) {
+                                    table += '<td class="percentage50">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
+
+                                } else if (rows[i].pct_avg_odds_adj_balanced && percentageValue < 50) {
+                                    table += '<td class="percentageLess">' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>'
+                                } else {
+                                    table += '<td>' + rows[i].pct_avg_odds_adj_balanced + "%" + '</td>';
+                                }
+
+                            } else {
+                                table += '<td>' + "    " + '</td>';
+                            }
+                            table += '<td>' + (rows[i].avg_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].pinnacle_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].fanduel_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].draftkings_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].barstool_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].betmgm_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].caesars_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].betonline_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].bovada_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].bet365_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].fox_bet_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].betano_odds || '') + '</td>';
+
+                            table += '</tr>';
+                        }
+                    }
+                    table += '</tbody>';
+                    table += '</table>';
+                    $('#table-container').html(table);
+                });
+            }
+        });
+
+    </script>
+    <style>
+        td {
+            border-radius: 10px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.2rem;
+            font-weight: 500;
+            /*CHANGE BELOW FOR CELL COLORS*/
+            background-color: #eeeeee;
+            -webkit-text-fill-color: black;
+        }
+
+        td.dark {
+            border-radius: 10px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.2rem;
+            font-weight: 500;
+            /*CHANGE BELOW FOR CELL COLORS*/
+            background-color: #eeeeee;
+            -webkit-text-fill-color: black;
+        }
+
+        tr {
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 5px;
+            text-align: center;
+            /*CHANGE BELOW FOR LINES BETWEEN*/
+            background-color: #ffffff;
+        }
+
+        .table.dark {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 5px;
+            text-align: center;
+            /*CHANGE BELOW FOR LINES BETWEEN*/
+            background-color: #161719;
+        }
+
+        td.prizePicks {
+            background-color: #6e6e6e;
+            font-weight: 700;
+        }
+
+        td.sportsBook {
+            font-weight: 700;
+        }
+
+        td.percentage60 {
+            background-color: #3cff59;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
+        }
+
+        td.percentage58 {
+            background-color: #a1ff00;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
+        }
+
+        td.percentage55 {
+            background-color: #d4ff00;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
+        }
+
+        td.percentage50 {
+            background-color: #ff7300;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
+        }
+
+        td.percentageLess {
+            background-color: #fe0000;
+            -webkit-text-fill-color: black;
+            font-weight: 700;
+        }
+
+        /*button CSS */
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 12%;
+            width: 100%;
+            background-color: #222222;
+        }
+
+        button {
+            width: 120px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #343a40;
+            outline: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            padding: 2px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 7px;
+        }
+
+        button.checked {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        button:hover {
+            background-color: #dddddd;
+        }
+
+        button:active {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="buttons-container">
+        <script>
+            var buttonsArray = ["NBA", "NHL", "MLB", "NCAAB", "SOCCER", "ALL"];
+
+            for (var i = 0; i < buttonsArray.length; i++) {
+                var button = document.createElement("button");
+                button.id = "button" + (i + 1);
+                button.className = "checked";
+                button.innerHTML = buttonsArray[i];
+                document.querySelector(".buttons-container").appendChild(button);
+            }
+        </script>
+    </div>
+    <div style="overflow-x:auto; max-width:100vw;">
+        <table>
+            <div id="table-container"></div>
+        </table>
+    </div>
+</body>
+
+</html>
