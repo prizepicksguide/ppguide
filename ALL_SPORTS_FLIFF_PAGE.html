@@ -40,7 +40,7 @@
                 table += '</tr></thead>';
 
 
-                var url = "https://cors-anywhere.herokuapp.com/" + "https://dgfantasy.com/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=11450&target_action=get-all-data&default_sorting=old_first";
+                var url = "https://cors-anywhere.herokuapp.com/" + "https://dgfantasy.com/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=12077&target_action=get-all-data&default_sorting=old_first";
                 $.getJSON(url, function (data) {
                     var rows = data
 
@@ -54,16 +54,13 @@
                             table += '<tr>';
                             table += '<td>' + (rows[i].first_name || '') + '</td>';
                             table += '<td>' + (rows[i].last_name || '') + '</td>';
-                            if(rows[i].odds_site_league != "England - Premier League"){
-                                table += '<td>' + (rows[i].odds_site_league || '') + '</td>';
-                            }else{
-                                table += '<td>' + ("SOCCER") + '</td>';
-                            }
+                            table += '<td>' + (rows[i].odds_site_league || '') + '</td>';
                             table += '<td>' + (rows[i].team || '') + '</td>';
                             table += '<td>' + (rows[i].over_under || '') + '</td>';
-                            table += '<td>' + (rows[i].stat || '') + '</td>';
-                            table += '<td class="prizePicks">' + (rows[i].prizepicks || '') + '</td>';
+                            table += '<td>' + (rows[i].prop || '') + '</td>';
                             table += '<td class="sportsBook">' + (rows[i].line_value || '') + '</td>';
+                            table += '<td class="prizePicks">' + (rows[i].fliff_odds || '') + '</td>';
+                            table += '<td class="prizePicks">' + (rows[i].pct_odds_diff || '') + '</td>';
                             if (rows[i].pct_avg_odds_adj_balanced != null) {
                                 var percentageValue = parseFloat(rows[i].pct_avg_odds_adj_balanced)
 
@@ -89,16 +86,16 @@
                             }
                             table += '<td>' + (rows[i].avg_odds || '') + '</td>';
                             table += '<td>' + (rows[i].pinnacle_odds || '') + '</td>';
-                            table += '<td>' + (rows[i].fanduel_odds || '') + '</td>';
                             table += '<td>' + (rows[i].draftkings_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].fanduel_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].betano_odds || '') + '</td>';
                             table += '<td>' + (rows[i].barstool_odds || '') + '</td>';
                             table += '<td>' + (rows[i].betmgm_odds || '') + '</td>';
                             table += '<td>' + (rows[i].caesars_odds || '') + '</td>';
                             table += '<td>' + (rows[i].betonline_odds || '') + '</td>';
                             table += '<td>' + (rows[i].bovada_odds || '') + '</td>';
                             table += '<td>' + (rows[i].bet365_odds || '') + '</td>';
-                            table += '<td>' + (rows[i].fox_bet_odds || '') + '</td>';
-                            table += '<td>' + (rows[i].betano_odds || '') + '</td>';
+                            table += '<td>' + (rows[i].stake_odds || '') + '</td>';
 
                             table += '</tr>';
                         }
