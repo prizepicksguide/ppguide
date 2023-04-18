@@ -60,7 +60,6 @@
                             table += '<td>' + (rows[i].prop || '') + '</td>';
                             table += '<td class="sportsBook">' + (rows[i].line_value || '') + '</td>';
                             table += '<td class="prizePicks">' + (rows[i].fliff_odds || '') + '</td>';
-                            table += '<td class="prizePicks">' + (rows[i].pct_odds_diff || '') + '</td>';
                             if (rows[i].pct_odds_diff != null) {
                                 var percentageValue = parseFloat(rows[i].pct_odds_diff)
 
@@ -84,6 +83,7 @@
                             } else {
                                 table += '<td>' + "    " + '</td>';
                             }
+                            table += '<td>' + (rows[i].pct_odds_balanced || '') + '</td>';
                             table += '<td>' + (rows[i].avg_odds || '') + '</td>';
                             table += '<td>' + (rows[i].pinnacle_odds || '') + '</td>';
                             table += '<td>' + (rows[i].draftkings_odds || '') + '</td>';
